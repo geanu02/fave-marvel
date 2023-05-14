@@ -46,6 +46,7 @@ class Marvel(db.Model):
     m_desc = db.String()
     m_img = db.Column(db.String)
     m_comics = db.Column(db.Integer)
+    fave_marvel = db.relationship('FaveMarvel', backref='char', lazy=True)
 
     def __repr__(self):
         return f"<Official Marvel Character: {self.m_name.title()}>"

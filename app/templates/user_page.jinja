@@ -2,23 +2,34 @@
 
 {% block content %}
 
-<div class="marvel_char_container">
-
-    <div class="card_container">
-    {% for m in user.fave_marvel %}
-    
-        <div class="card border-light card_style">
-            <div class="card-header text-end">Add to Favorites</div>
-            <div class="card-body card_body">
-                <div class="card_left">
-                    <img src="{{ m.m_img }}" alt="{{ m.m_name }}">
+<div class="user_page_main_container">
+    <h3 class="user_page_header">{{user.first_name}}'s Favorite Marvel Characters</h3>
+    {% if fave_marvel %}
+    <div class="user_page_card_container">
+        {% for fave, marv in fave_marvel %}
+        <div class="card mb-3 user_page_card">
+            <div class="row g-0">
+                <div class="col-md-4 user_page_card_image_container">
+                    <img src="{{ marv.m_img }}" class="rounded-start user_page_card_image" alt="{{ marv.m_name }}">
                 </div>
-            </div>
-            <div class="card-footer"><b>{{ char.name.title() }}</b></div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ fave.nickname }}</h5>
+                        {% if marv.m_name != fave.nickname %}
+                        <h6 class="card-text">
+                            <small class="text-body-secondary">{{ marv.m_name }}</small>
+                        </h6>
+                        {% endif %}
+                        <p class="card-text">Power: {{ fave.superpower }}</p>
+                        <p class="card-text">Appeared in {{ marv.m_comics }} comics</p>
+                    </div>
+                </div>
+                <div class="card-footer"><small class="text-body-secondary">Added on {{ fave.date_added.strftime('%m/%d/%Y') }}</small></div>
+                </div>
         </div>
-
-    {% endfor %}
+        {% endfor %}
     </div>
+    {% endif %}
 
 </div>
 

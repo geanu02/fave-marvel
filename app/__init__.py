@@ -25,7 +25,7 @@ from app.blueprints.marvel import bp as marvel_bp
 app.register_blueprint(marvel_bp)
 from app.blueprints.auth import bp as auth_bp
 app.register_blueprint(auth_bp)
-# from app.blueprints.api import bp as api_bp
-# app.register_blueprint(api_bp)
+from app.blueprints.api import bp as api_bp
+app.register_blueprint(api_bp)
 
 from app import models
