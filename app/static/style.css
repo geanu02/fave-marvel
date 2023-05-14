@@ -1,0 +1,80 @@
+body {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+img {
+    width: 100%;
+}
+
+.flash_container {
+    margin: 0 auto; 
+    max-width: 800px;
+}
+
+.base_container {
+    margin: 50px auto;
+    background-color: whitesmoke;
+    max-width: 980px;
+}
+.error_msg {
+    color: orangered;
+}
+
+/* marvel.jinja */
+
+.marvel_char_container {
+    padding: 30px;
+
+}
+
+.marvel_heading {
+    padding: 25px 0;
+    text-align: center;
+}
+
+.card_container {
+    margin: 0 auto;
+    width: 870px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.card_style {
+    margin: 15px;
+    width: 260px;
+}
+
+/* .card_body {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+} */
+
+/* .card_left {
+    max-width: 180px;
+
+} */
+
+/* .card_right {
+    max-width: 60%;
+
+} */
+
+.card_number {
+    line-height: 1.0;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight:lighter;
+}
+
+.card_title {
+    line-height: 1.1;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: -0.03rem;
+    font-size: 1rem;
+}

@@ -1,0 +1,25 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+
+<div class="marvel_char_container">
+
+    <div class="card_container">
+    {% for m in user.fave_marvel %}
+    
+        <div class="card border-light card_style">
+            <div class="card-header text-end">Add to Favorites</div>
+            <div class="card-body card_body">
+                <div class="card_left">
+                    <img src="{{ m.m_img }}" alt="{{ m.m_name }}">
+                </div>
+            </div>
+            <div class="card-footer"><b>{{ char.name.title() }}</b></div>
+        </div>
+
+    {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

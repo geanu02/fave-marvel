@@ -1,0 +1,32 @@
+{% extends "base.jinja" %}
+
+{% block content %}
+<div class="form_container">
+    <form action="" method="POST" novalidate class="form_signup">
+
+        <h2>Sign in to Marvel Favorites</h2>
+        {{ form.hidden_tag() }}
+        <br>
+        <br>
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32,placeholder='username') }}
+            {% for error in form.username.errors %}
+                <span class="error_msg">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32, placeholder='password') }}
+            {% for error in form.password.errors %}
+                <span class="error_msg">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <br>
+        <br>
+        <p>{{ form.submit() }}</p>
+
+    </form>
+</div>
+
+{% endblock %}

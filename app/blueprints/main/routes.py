@@ -1,5 +1,5 @@
-from flask import render_template
-
+from flask import render_template, jsonify
+from app import marvel_obj
 from . import bp
 
 @bp.route('/')

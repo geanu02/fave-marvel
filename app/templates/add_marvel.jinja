@@ -1,0 +1,47 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+
+<div class="marvel_char_container">
+    <div class="card_left">
+        <img src="{{ results.m_img }}" alt="{{ results.m_name }}">
+    </div>
+    <div class="mb-3 row">
+        <label for="marvelName" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="marvelName" value="{{ results.m_name }}">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="marvelDesc" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="marvelDesc" value="{{ results.m_desc }}">
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <label for="marvelDesc" class="col-sm-2 col-form-label"># of Comics</label>
+        <div class="col-sm-10">
+            <input type="text" readonly class="form-control-plaintext" id="marvelComics" value="{{ results.m_comics }}">
+        </div>
+    </div>
+    <form action="" method="POST" novalidate class="form_signup">
+        {{ form.hidden_tag() }}
+        {{ form.nickname.label }}<br>
+        {{ form.nickname(size=32,placeholder='nickname') }}
+        {% for error in form.nickname.errors %}
+            <span class="error_msg">{{ error }}</span>
+        {% endfor %}
+        </p>
+        <p>
+        {{ form.superpower.label }}<br>
+        {{ form.superpower(size=32, placeholder='superpower') }}
+        {% for error in form.superpower.errors %}
+            <span class="error_msg">{{ error }}</span>
+        {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+
+</div>
+
+{% endblock %}

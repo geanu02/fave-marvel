@@ -1,0 +1,13 @@
+{% extends 'base.jinja' %}
+
+{% block content %}
+    <h2>Marvel Home</h2>
+    <h3>
+    <a href="{{ url_for ('marvel.search_marvel') }}">Marvel Page</a>
+    </h3>
+    {# <ol>
+    {% for char in chars %}
+    <li>{{ char.name.title() }}</li>
+    {% endfor %}
+    </ol> #}
+{% endblock %}

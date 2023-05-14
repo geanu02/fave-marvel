@@ -3,7 +3,7 @@ from flask_login import UserMixin
 from datetime import datetime
 from secrets import token_urlsafe
 
-from app import db, login
+from app import db, ma, login
 
 
 @login.user_loader
@@ -21,7 +21,7 @@ class User(UserMixin, db.Model):
     fave_marvel = db.relationship('FaveMarvel', backref='fan', lazy=True)
 
     def __repr__(self):
-        return f"Registered Email: {self.email}"
+        return f"<User: {self.username}>"
 
     def commit(self):
         db.session.add(self)
@@ -40,17 +40,31 @@ class User(UserMixin, db.Model):
         return str(self.user_id)
 
 class Marvel(db.Model):
-    marvel_id = db.Column(db.Integer, primary_key=True)
-    
+    id = db.Column(db.Integer, primary_key=True)
+    marvel_id = db.Column(db.Integer, unique=True)
+    m_name = db.Column(db.String(150))
+    m_desc = db.String()
+    m_img = db.Column(db.String)
+    m_comics = db.Column(db.Integer)
+
+    def __repr__(self):
+        return f"<Official Marvel Character: {self.m_name.title()}>"
+
+    def commit(self):
+        db.session.add(self)
+        db.session.commit()
 
 class FaveMarvel(db.Model):
     fave_id = db.Column(db.Integer, primary_key=True)
     date_added = db.Column(db.DateTime, default=datetime.utcnow)
-    marvel_id = db.Column(db.Integer, db.ForeignKey(''))
+    m_name = db.Column(db.String(150))
+    nickname = db.Column(db.String(50))
+    superpower = db.Column(db.String(50))
+    marvel_id = db.Column(db.Integer, db.ForeignKey('marvel.marvel_id'))
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
 
     def __repr__(self):
-        return f"<Pokemon #{self.poke_num}: {self.poke_name.title()}>"
+        return f"<FaveMarvel Character: {self.nickname.title()} ({self.m_name})>"
 
     def commit(self):
         db.session.add(self)
