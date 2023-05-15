@@ -48,7 +48,7 @@ def add_marvel(marvel_id):
                        dta['thumbnail']['extension']])
         comic = dta['comics']['available']
         m_new = Marvel(marvel_id=marvel_id, m_name=name)
-        m_new.m_desc = desc if desc else "No description available."
+        m_new.m_desc = "No description available."
         m_new.m_img = img
         m_new.m_comics = comic
         m_new.commit()

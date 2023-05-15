@@ -1,4 +1,4 @@
-from flask import jsonify, make_response
+from flask import jsonify
 import json
 from . import bp
 from app import db
@@ -42,7 +42,6 @@ def marvel_single_id(user, marvel_id):
             'id': m.id,
             'marvel_id': m.marvel_id,
             'marvel_name': m.m_name,
-            'marvel_desc': m.m_desc,
             'marvel_img': m.m_img,
             'marvel_comics': m.m_comics
         }]), 200
@@ -64,7 +63,6 @@ def marvel_all_by_user(user, username):
                 'fave_superpower': f.superpower,
                 'marvel_id': m.marvel_id,
                 'marvel_name': m.m_name,
-                'marvel_desc': m.m_desc,
                 'marvel_img': m.m_img,
                 'marvel_comics': m.m_comics
             } for f, m in join_fave_marvel]), 200
@@ -88,7 +86,6 @@ def marvel_single_id_by_user(user, username, marvel_id):
                     'fave_superpower': f.superpower,
                     'marvel_id': m.marvel_id,
                     'marvel_name': m.m_name,
-                    'marvel_desc': m.m_desc,
                     'marvel_img': m.m_img,
                     'marvel_comics': m.m_comics
                 } for f, m in join_fave_marvel]), 200

@@ -57,7 +57,7 @@ class Marvel(db.Model):
 
 class MarvelSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
-        fields = ('id', 'marvel_id', 'm_name', 'm_desc', 'm_img', 'm_comics')
+        fields = ('id', 'marvel_id', 'm_name', 'm_img', 'm_comics')
 
 class FaveMarvel(db.Model):
     fave_id = db.Column(db.Integer, primary_key=True)
