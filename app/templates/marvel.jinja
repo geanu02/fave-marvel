@@ -1,53 +1,56 @@
 {% extends 'base.jinja' %}
 
 {% block content %}
-<h2>Marvel Home</h2>
-<form action="" method="POST" novalidate>
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.marvel_char.label }}<br>
-        {{ form.marvel_char(size=32) }}
-        {% for error in form.marvel_char.errors %}
-        <span class="error_msg">{{ error }}</span>
-        {% endfor %}
-    </p>
-    <p>{{ form.marvel_submit() }}</p>
-</form>
-<blockquote></blockquote>
 
-<div class="marvel_char_container">
+<div class="marvel_container">
 
-{% if chars %}
-    <h5 class="marvel_heading">
-    {% if (chars|length) == 1 %}
-    1 match
-    {% else %}
-    {{ (chars|length) }} matches
-    {% endif %}
-     for "{{ form.marvel_char.data }}"
-    </h5>
-
-    <div class="card_container">
-    {% for char in chars %}
-    
-        <div class="card border-light card_style">
-            <div class="card-header text-end">
-                <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" href="{{ url_for ('marvel.add_marvel', marvel_id=char.id) }}">
-                    Add to Favorites
-                </a>
-            </div>
-            <div class="card-body card_body">
-                <div class="card_left">
-                    <img src="{{ '.'.join([char.thumbnail.path, char.thumbnail.extension]) }}" alt="{{ char.name.title() }}">
-                </div>
-            </div>
-            <div class="card-footer"><b>{{ char.name.title() }}</b></div>
-        </div>
-
-    {% endfor %}
+    <div class="marvel_head_container">
+        <h2>Search Marvel Characters</h2>
+        <form action="" method="POST" novalidate class="form_signupin">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.marvel_char(size=32,placeholder="Type here...") }}
+                {% for error in form.marvel_char.errors %}
+                    <span class="error_msg">{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>{{ form.marvel_submit() }}</p>
+        </form>
     </div>
 
-{% endif %}
-</div>
+    <div class="marvel_char_container">
+    {% if chars %}
+        <h5 class="matches_heading">
+        {% if (chars|length) == 1 %}
+        1 match
+        {% else %}
+        {{ (chars|length) }} matches
+        {% endif %}
+        for "{{ form.marvel_char.data }}"
+        </h5>
 
+        <div class="card_container">
+        {% for char in chars %}
+        
+            <div class="card border-light card_style">
+                <div class="card-header text-end">
+                    <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover card_add" href="{{ url_for ('marvel.add_marvel', marvel_id=char.id) }}">
+                        Add to Favorites
+                    </a>
+                </div>
+                <div class="card-body card_body">
+                    <img src="{{ '.'.join([char.thumbnail.path, char.thumbnail.extension]) }}" alt="{{ char.name.title() }}" class="card_body_img">
+                </div>
+                <div class="card-footer text-wrap card_footer">{{ char.name.title() }}</div>
+            </div>
+
+        {% endfor %}
+        </div>
+    {% else %}
+    <div class="marvel_empty">
+        <h5 class="matches_heading">Query Results Here</h5>
+    </div>
+    {% endif %}
+    </div>
+</div>
 {% endblock %}

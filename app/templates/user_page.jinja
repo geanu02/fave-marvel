@@ -13,15 +13,19 @@
                     <img src="{{ marv.m_img }}" class="rounded-start user_page_card_image" alt="{{ marv.m_name }}">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body">
+                    <div class="card-body user_page_card_body">
                         <h5 class="card-title">{{ fave.nickname }}</h5>
                         {% if marv.m_name != fave.nickname %}
-                        <h6 class="card-text">
+                        <h6 class="card-text m-0">
                             <small class="text-body-secondary">{{ marv.m_name }}</small>
                         </h6>
                         {% endif %}
-                        <p class="card-text">Power: {{ fave.superpower }}</p>
-                        <p class="card-text">Appeared in {{ marv.m_comics }} comics</p>
+                        <p class="card-text m-0">
+                            <small class="text-body-secondary">Power: {{ fave.superpower }}</small>
+                        </p>
+                        <p class="card-text m-0">
+                            <small class="text-body-secondary">Appeared in {{ marv.m_comics }} comics</small>
+                        </p>
                     </div>
                 </div>
                 <div class="card-footer"><small class="text-body-secondary">Added on {{ fave.date_added.strftime('%m/%d/%Y') }}</small></div>

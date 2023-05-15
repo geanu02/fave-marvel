@@ -8,10 +8,3 @@ def home():
         'index.jinja',
         title="Welcome to FaveMarvel",
     )
-
-@bp.route('/about')
-def about():
-    return render_template(
-        'about.jinja',
-        title="About FaveMarvel"
-    )

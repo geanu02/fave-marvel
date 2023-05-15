@@ -2,22 +2,20 @@
 
 {% block content %}
 <div class="form_container">
-    <form action="" method="POST" novalidate class="form_signup">
+    <form action="" method="POST" novalidate class="form_signupin">
 
         <h2>Sign in to Marvel Favorites</h2>
         {{ form.hidden_tag() }}
         <br>
         <br>
         <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32,placeholder='username') }}
+            {{ form.username(size=32,placeholder='Username',align=center) }}
             {% for error in form.username.errors %}
                 <span class="error_msg">{{ error }}</span>
             {% endfor %}
         </p>
         <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32, placeholder='password') }}
+            {{ form.password(size=32, placeholder='Password') }}
             {% for error in form.password.errors %}
                 <span class="error_msg">{{ error }}</span>
             {% endfor %}

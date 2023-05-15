@@ -1,13 +1,17 @@
 {% extends 'base.jinja' %}
 
 {% block content %}
-    <h2>Marvel Home</h2>
+
+<div class="home_container">
+    <h2>Marvel Favorites</h2>
+
+        <h4>Search your favorite Marvel Character!</h4>
+        <h4>Customize by giving them nicknames or new superpower!</h4>
+        <h4>Grow your Marvel Collection!</h4>
+
     <h3>
-    <a href="{{ url_for ('marvel.search_marvel') }}">Marvel Page</a>
+        <a href="{{ url_for ('marvel.search_marvel') }}">Get started here!</a>
     </h3>
-    {# <ol>
-    {% for char in chars %}
-    <li>{{ char.name.title() }}</li>
-    {% endfor %}
-    </ol> #}
+</div>
+
 {% endblock %}

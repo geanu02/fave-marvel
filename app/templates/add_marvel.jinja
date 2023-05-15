@@ -2,46 +2,32 @@
 
 {% block content %}
 
-<div class="marvel_char_container">
-    <div style="width: 120px;">
-        <img src="{{ results.m_img }}" alt="{{ results.m_name }}" style="object-fit: cover;">
-    </div>
-    <div class="mb-3 row">
-        <label for="marvelName" class="col-sm-2 col-form-label">Name</label>
-        <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="marvelName" value="{{ results.m_name }}">
-        </div>
-    </div>
-    <div class="mb-3 row">
-        <label for="marvelDesc" class="col-sm-2 col-form-label">Description</label>
-        <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="marvelDesc" value="{{ results.m_desc }}">
-        </div>
-    </div>
-    <div class="mb-3 row">
-        <label for="marvelDesc" class="col-sm-2 col-form-label"># of Comics</label>
-        <div class="col-sm-10">
-            <input type="text" readonly class="form-control-plaintext" id="marvelComics" value="{{ results.m_comics }}">
-        </div>
-    </div>
-    <form action="" method="POST" novalidate class="form_signup">
-        {{ form.hidden_tag() }}
-        {{ form.nickname.label }}<br>
-        {{ form.nickname(size=32,placeholder='nickname') }}
-        {% for error in form.nickname.errors %}
-            <span class="error_msg">{{ error }}</span>
-        {% endfor %}
-        </p>
-        <p>
-        {{ form.superpower.label }}<br>
-        {{ form.superpower(size=32, placeholder='superpower') }}
-        {% for error in form.superpower.errors %}
-            <span class="error_msg">{{ error }}</span>
-        {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+<div class="add_marvel_container">
 
+    <div class="add_marvel_left">
+        <img src="{{ results.m_img }}" alt="{{ results.m_name }}" class="add_marvel_left_img">
+    </div>
+    <div class="add_marvel_middle">
+        <h4 class="add_marvel_middle_heading">{{ results.m_name }}</h4>
+        <form action="" method="POST" novalidate class="form_signupin">
+            {{ form.hidden_tag() }}
+            {{ form.nickname(size=32,placeholder='Give a Nickname?') }}
+            {% for error in form.nickname.errors %}
+                <span class="error_msg">{{ error }}</span>
+            {% endfor %}
+            </p>
+            <p>
+            {{ form.superpower(size=32, placeholder='Chosen Superpower?') }}
+            {% for error in form.superpower.errors %}
+                <span class="error_msg">{{ error }}</span>
+            {% endfor %}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+    </div>
+    <div class="add_marvel_right">
+        <h3>Customize your Marvel character!</h3>
+    </div>
 </div>
 
 {% endblock %}

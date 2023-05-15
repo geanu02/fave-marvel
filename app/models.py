@@ -48,12 +48,16 @@ class Marvel(db.Model):
     m_comics = db.Column(db.Integer)
     fave_marvel = db.relationship('FaveMarvel', backref='char', lazy=True)
 
-    def __repr__(self):
-        return f"<Official Marvel Character: {self.m_name.title()}>"
+    # def __repr__(self):
+    #     return f"<Official Marvel Character: {self.m_name.title()}>"
 
     def commit(self):
         db.session.add(self)
         db.session.commit()
+
+class MarvelSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        fields = ('id', 'marvel_id', 'm_name', 'm_desc', 'm_img', 'm_comics')
 
 class FaveMarvel(db.Model):
     fave_id = db.Column(db.Integer, primary_key=True)

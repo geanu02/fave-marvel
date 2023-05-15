@@ -1,7 +1,7 @@
 <div class="flash_container">
     {% with msgs = get_flashed_messages(with_categories=true) %}
     {% if msgs %}
-    <ul class="mt-3">
+    <ul class="flash_list mt-3">
         {% for category, msg in msgs %}
         <li class="alert alert-{{ category }} alert-dismissible fade show li_item" role="alert">
             {{ msg }}

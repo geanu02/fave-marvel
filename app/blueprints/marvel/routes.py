@@ -67,6 +67,7 @@ def add_marvel(marvel_id):
         )
         fm.commit()
         flash(f"{nickname} is added to your favorites!", "success")
+        return redirect(url_for("marvel.user_page", username=current_user.username))
     return render_template(
         'add_marvel.jinja',
         title=f"{user.first_name}'s Favorite Marvel Characters",

@@ -1,9 +1,13 @@
-from flask import jsonify
-
+from flask import jsonify, make_response
+import json
 from . import bp
 from app import db
-from app.models import User, FaveMarvel, Marvel
+from app.models import User, FaveMarvel, Marvel, MarvelSchema
 from app.blueprints.api.helpers import token_required
+
+# Initialize Schemas
+marvel_schema = MarvelSchema()
+marvels_schema = MarvelSchema(many=True)
 
 # Receive All Marvel Characters
 @bp.get('/marvel')
@@ -11,15 +15,22 @@ from app.blueprints.api.helpers import token_required
 def marvel_all(user):
     marvel = Marvel.query.all()
     if marvel:
-        return jsonify([{
-            'id': m.id,
-            'marvel_id': m.marvel_id,
-            'marvel_name': m.m_name,
-            'marvel_desc': m.m_desc,
-            'marvel_img': m.m_img,
-            'marvel_comics': m.m_comics
-        } for m in marvel]), 200
-    return jsonify([{'message':'No characters available to view.'}]), 404
+        result = marvels_schema.dump(marvel)
+        return jsonify(result)
+    # if marvel:
+    #     result = []
+    #     for m in marvel:
+    #         result.append({
+    #             'id': m.id,
+    #             'marvel_id': m.marvel_id,
+    #             'marvel_name': m.m_name,
+    #             'marvel_desc': m.m_desc,
+    #             'marvel_img': m.m_img,
+    #             'marvel_comics': m.m_comics
+    #         })
+    #     return make_response(jsonify(result), 200)
+    # else:
+    #     return jsonify([{'message':'No characters available to view.'}]), 404
 
 # Receive Marvel Character by marvel_id
 @bp.get('/marvel/<marvel_id>')

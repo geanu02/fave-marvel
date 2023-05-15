@@ -7,29 +7,92 @@ img {
     width: 100%;
 }
 
+/*  navbar.jinja */
+
+.navbar_nav {
+    background-color: #e3f2fd;
+}
+
+/* flash.jinja */
+
 .flash_container {
     margin: 0 auto; 
     max-width: 800px;
 }
+
+.flash_list {
+    list-style-type: none;
+}
+
+/* base.jinja */
 
 .base_container {
     margin: 50px auto;
     background-color: whitesmoke;
     max-width: 980px;
 }
+
 .error_msg {
     color: orangered;
 }
 
-/* marvel.jinja */
+/* index.jinja */
 
-.marvel_char_container {
-    border-radius: 15px;
+.home_container {
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/static/marvel_home.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:cover;
+    width: 100%;
+    height: 560px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    color: #eee;
 }
 
-.marvel_heading {
+/* marvel.jinja */
+
+.marvel_container {
+    width: 100%;
+}
+
+.marvel_head_container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/static/marvel_banner.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size:cover;
+    width: 100%;
+    height: 170px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.marvel_char_container {
+    background-color: gray;
+    width: 100%;
+    height: 590px;
+    overflow-y: auto;
+}
+
+.marvel_empty {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.matches_heading {
     padding: 25px 0;
     text-align: center;
+    color: #111111;
 }
 
 .card_container {
@@ -38,8 +101,8 @@ img {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
 }
 
 .card_style {
@@ -47,11 +110,69 @@ img {
     width: 260px;
 }
 
-/* .card_body {
+.card_add {
+    font-size: 14px;
+}
+
+.card_body {
+    padding: 0;
+    height: 260px;
+}
+
+.card_body_img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.card_footer {
+    font-size: 14px;
+    text-align: center;
+}
+
+/* add_marvel.jinja */
+
+.add_marvel_container {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/static/add_marvel.jpg');
+    background-repeat: no-repeat;
+    background-position:center;
+    background-size:cover;
+    width: 100%;
+    height: 300px;
+    padding: 0;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-} */
+}
+
+.add_marvel_left {
+    width: 30%;
+    padding: 15px;
+}
+
+.add_marvel_left_img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.add_marvel_middle {
+    width: 40%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.add_marvel_middle_heading {
+    padding-bottom: 25px;
+}
+
+.add_marvel_right {
+    width: 30%;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
 
 /* .card_left {
     max-width: 180px;
@@ -77,6 +198,28 @@ img {
     letter-spacing: -0.03rem;
     font-size: 1rem;
 }
+
+/* signin.jinja and signup.jinja */
+
+.form_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 515px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('/static/avengers.jpg');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: cover;
+    text-align: center;
+}
+
+.form_signupin {
+    margin: 0;
+    text-align: center;
+}
+
+/* user_page.jinja */
 
 .user_page_main_container {
     width: 100%;
@@ -104,10 +247,14 @@ img {
 }
 
 .user_page_card_image_container {
-    min-height: 160px;
+    height: 160px;
 }
 
 .user_page_card_image {
     height: 100%;
     object-fit: cover;
+}
+
+.user_page_card_body {
+    overflow-y: auto;
 }
