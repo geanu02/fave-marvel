@@ -55,7 +55,7 @@ class Marvel(db.Model):
         db.session.add(self)
         db.session.commit()
 
-class MarvelSchema(ma.SQLAlchemyAutoSchema):
+class MarvelSchema(ma.Schema):
     class Meta:
         fields = ('id', 'marvel_id', 'm_name', 'm_img', 'm_comics')
 

@@ -11,6 +11,7 @@ img {
 
 .navbar_nav {
     background-color: #e3f2fd;
+    margin-bottom: 30px;
 }
 
 /* flash.jinja */
@@ -27,7 +28,7 @@ img {
 /* base.jinja */
 
 .base_container {
-    margin: 50px auto;
+    margin: 30px auto;
     background-color: whitesmoke;
     max-width: 980px;
 }

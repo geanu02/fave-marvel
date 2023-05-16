@@ -25,7 +25,7 @@ def marvel_all(user):
 def marvel_single_id(user, marvel_id):
     marvel = Marvel.query.filter_by(marvel_id=marvel_id).first()
     if marvel:
-        result = marvels_schema.dump(marvel)
+        result = marvel_schema.dump(marvel)
         return jsonify(result), 200
     return jsonify([{'message':'No characters available to view.'}]), 404
 
@@ -39,7 +39,6 @@ def marvel_all_by_user(user, username):
             return jsonify([{
                 'user_id': user.user_id,
                 'username': user.username,
-                'fave_id': f.fave_id,
                 'fave_added': f.date_added,
                 'fave_nickname': f.nickname,
                 'fave_superpower': f.superpower,
@@ -62,7 +61,6 @@ def marvel_single_id_by_user(user, username, marvel_id):
                 return jsonify([{
                     'user_id': user.user_id,
                     'username': user.username,
-                    'fave_id': f.fave_id,
                     'fave_added': f.date_added,
                     'fave_nickname': f.nickname,
                     'fave_superpower': f.superpower,
