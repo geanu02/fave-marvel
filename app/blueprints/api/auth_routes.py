@@ -12,7 +12,10 @@ def verify_user():
     password = content['password']
     user = User.query.filter_by(username=username).first()
     if user and user.check_password(password):
-        return jsonify([{"token": user.token}])
+        return jsonify([{
+            "token": user.token,
+            "success": True
+        }]), 200
     return jsonify({'message': 'User Info not Found'})
 
 # Register User
@@ -37,5 +40,6 @@ def register_user():
     user.add_token()
     user.commit()
     return jsonify([{
-        "message": f"{user.username} successfully registered!"
+        "message": f"{user.username} successfully registered!",
+        "token": user.token
     }])
